@@ -6,12 +6,13 @@ from dataclasses import asdict
 from datetime import datetime
 
 from pokeapi.pokeapi_service.pokeapi_rest_service import PokeAPIRestService
-from pokeapi.pokeapi_service.pokeapi_secuential_rest_service import PokeAPISecuentialRestService
+
+from pokeapi.pokeapi_service.pokeapi_threaded_rest_service import PokeAPIThreadedRestService
 
 if __name__ == '__main__':
     start_time = datetime.now()
 
-    pokeapi_service: PokeAPIRestService = PokeAPISecuentialRestService()
+    pokeapi_service: PokeAPIRestService = PokeAPIThreadedRestService()
     pokemon_names = pokeapi_service.get_list_names(limit=300)
     pokemons = pokeapi_service.get_by_names(pokemon_names)
 
